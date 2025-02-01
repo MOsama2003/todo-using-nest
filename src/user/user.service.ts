@@ -27,15 +27,15 @@ export class UserService {
     return this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findUserById(userId : number){
+    return this.userRepository.findOneOrFail({ where : { id : userId }})
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  findUserByEmail(email : string) {
+    return this.userRepository.findOneOrFail({ where : { email : email}})
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.userRepository.delete(id);
   }
 }
